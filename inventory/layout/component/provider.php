@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="../../css/provider.css">
-<script src="../../js/provider.js"></script>
+<link rel="stylesheet" href="./css/provider.css">
+<script src="./js/provider.js"></script>
 <?php
-include "connectDatabase/DB_provider.php";
+include "./connectDatabase/DB_provider.php";
 $dbProvider = new DB_provider();
 // global $category_id;
 $provider_name = isset($_GET['provider_name']) ? $_GET['provider_name'] : "";

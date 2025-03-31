@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Đăng Nhập</title>
-    <link rel="stylesheet" href="/css/log_in.css" />
+    <link rel="stylesheet" href="../css/log_in.css" />
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         <div class="img-homepage"></div>
         <h1 class="heading">Quản lí kho</h1>
         <div class="login-container">
-            <form class="login-form" action="/process/login.php" method="POST">
+            <form class="login-form" action="../process/login.php" method="POST">
                 <h2>Đăng Nhập</h2>
                 <div class="form-group">
                     <label for="username">Tên Đăng Nhập</label>

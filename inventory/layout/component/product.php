@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="../../css/product.css">
-<script src="../../js/product.js"></script>
+<link rel="stylesheet" href="./css/product.css">
+<script src="./js/product.js"></script>
+<!-- <script src="./connectDatabase/DB_product.php"></script> -->
 <?php
-include "connectDatabase/DB_product.php";
+include "./connectDatabase/DB_product.php";
 $dbProduct = new DB_product();
 // global $category_id;
 $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : "";
@@ -151,19 +152,21 @@ $startIndex = ($currentPage - 1) * $perPage;
                     if (is_array($new_data) && !empty($new_data)) {
                         foreach ($new_data as $key => $row) {
                             $img = $dbProduct->getImagesProduct($row['id']);
+                            $img_src = isset($img['img1']) ? "./" . $img['img1'] : "./assets/img/img_product/default_img.jpeg";
                             if (empty($img)) {
                                 $img = [
-                                    'img1' => "assets/img/img_product/default_img.jpeg",
-                                    'img2' => "assets/img/img_product/default_img.jpeg",
-                                    'img3' => "assets/img/img_product/default_img.jpeg",
-                                    'img4' => "assets/img/img_product/default_img.jpeg",
-                                    'img5' => "assets/img/img_product/default_img.jpeg"
+                                    'img1' => "./assets/img/img_product/default_img.jpeg",
+                                    'img2' => "./assets/img/img_product/default_img.jpeg",
+                                    'img3' => "./assets/img/img_product/default_img.jpeg",
+                                    'img4' => "./assets/img/img_product/default_img.jpeg",
+                                    'img5' => "./assets/img/img_product/default_img.jpeg"
                                 ];
                             }
+                            // $img = "./" . $img;
 
                             // Hiển thị ảnh (sử dụng ảnh đầu tiên nếu chỉ có 1 ảnh, hoặc lặp qua tất cả ảnh nếu có nhiều hơn)
-                            $img_src = isset($img['img1']) ? $img['img1'] : "assets/img/img_product/default_img.jpeg";
                             $quantity_all = isset($row['quantity']) ? $row['quantity'] : 0;
+                            // printJS($img_src);
                             echo "
                         <tr>  
                             <td>" . $row['id'] . "</td>  
@@ -333,22 +336,22 @@ function html_detail($data1)
     $flag_newProduct = 0;
     if (empty($img)) {
         $img = [
-            'img1' => "assets/img/img_product/default_img.jpeg",
-            'img2' => "assets/img/img_product/default_img.jpeg",
-            'img3' => "assets/img/img_product/default_img.jpeg",
-            'img4' => "assets/img/img_product/default_img.jpeg",
-            'img5' => "assets/img/img_product/default_img.jpeg"
+            'img1' => "./assets/img/img_product/default_img.jpeg",
+            'img2' => "./assets/img/img_product/default_img.jpeg",
+            'img3' => "./assets/img/img_product/default_img.jpeg",
+            'img4' => "./assets/img/img_product/default_img.jpeg",
+            'img5' => "./assets/img/img_product/default_img.jpeg"
         ];
         // $data->initDetailProduct($_GET['product_id'], $_GET['ca']);
         // $data1 = $data->getAllDetailProduct($_GET['product_id']);
     }
 
     // Hiển thị ảnh (sử dụng ảnh đầu tiên nếu chỉ có 1 ảnh, hoặc lặp qua tất cả ảnh nếu có nhiều hơn)
-    $img1_src = isset($img['img1']) ? $img['img1'] : "assets/img/img_product/default_img.jpeg";
-    $img2_src = isset($img['img2']) ? $img['img2'] : "assets/img/img_product/default_img.jpeg";
-    $img3_src = isset($img['img3']) ? $img['img3'] : "assets/img/img_product/default_img.jpeg";
-    $img4_src = isset($img['img4']) ? $img['img4'] : "assets/img/img_product/default_img.jpeg";
-    $img5_src = isset($img['img5']) ? $img['img5'] : "assets/img/img_product/default_img.jpeg";
+    $img1_src = isset($img['img1']) ? $img['img1'] : "./assets/img/img_product/default_img.jpeg";
+    $img2_src = isset($img['img2']) ? $img['img2'] : "./assets/img/img_product/default_img.jpeg";
+    $img3_src = isset($img['img3']) ? $img['img3'] : "./assets/img/img_product/default_img.jpeg";
+    $img4_src = isset($img['img4']) ? $img['img4'] : "./assets/img/img_product/default_img.jpeg";
+    $img5_src = isset($img['img5']) ? $img['img5'] : "./assets/img/img_product/default_img.jpeg";
     // echo "
     // <script>alert('" . $imgProduct['img1'] . "')</script>
     // ";
@@ -401,7 +404,7 @@ function html_detail($data1)
         ';
     foreach ($data1 as $key => $row) {
         // $flag_newProduct = isset($row['size']) ? 1 : 0;
-        if ($img1_src == "assets/img/img_product/default_img.jpeg") {
+        if ($img1_src == "./assets/img/img_product/default_img.jpeg") {
             // printJS("hello");
             $sizeCode = initSize($row['type_id']);
             $html_code .= $sizeCode;
@@ -427,7 +430,7 @@ function html_detail($data1)
     foreach ($data1 as $key => $row) {
         $quantity_all = isset($row_tmp[0]['quantity']) ? $row_tmp[0]['quantity'] : 0;
         $quantity = isset($row['quantity']) ? $row['quantity'] : 0;
-        if ($img1_src == "assets/img/img_product/default_img.jpeg") {
+        if ($img1_src == "./assets/img/img_product/default_img.jpeg") {
             $html_code .= '
                 </div>
             </div>
@@ -467,20 +470,20 @@ function html_update($data1)
 
     if (empty($img)) {
         $img = [
-            'img1' => "assets/img/img_product/default_img.jpeg",
-            'img2' => "assets/img/img_product/default_img.jpeg",
-            'img3' => "assets/img/img_product/default_img.jpeg",
-            'img4' => "assets/img/img_product/default_img.jpeg",
-            'img5' => "assets/img/img_product/default_img.jpeg"
+            'img1' => "./assets/img/img_product/default_img.jpeg",
+            'img2' => "./assets/img/img_product/default_img.jpeg",
+            'img3' => "./assets/img/img_product/default_img.jpeg",
+            'img4' => "./assets/img/img_product/default_img.jpeg",
+            'img5' => "./assets/img/img_product/default_img.jpeg"
         ];
     }
 
     // Hiển thị ảnh (sử dụng ảnh đầu tiên nếu chỉ có 1 ảnh, hoặc lặp qua tất cả ảnh nếu có nhiều hơn)
-    $img1_src = isset($img['img1']) ? $img['img1'] : "assets/img/img_product/default_img.jpeg";
-    $img2_src = isset($img['img2']) ? $img['img2'] : "assets/img/img_product/default_img.jpeg";
-    $img3_src = isset($img['img3']) ? $img['img3'] : "assets/img/img_product/default_img.jpeg";
-    $img4_src = isset($img['img4']) ? $img['img4'] : "assets/img/img_product/default_img.jpeg";
-    $img5_src = isset($img['img5']) ? $img['img5'] : "assets/img/img_product/default_img.jpeg";
+    $img1_src = isset($img['img1']) ? $img['img1'] : "./assets/img/img_product/default_img.jpeg";
+    $img2_src = isset($img['img2']) ? $img['img2'] : "./assets/img/img_product/default_img.jpeg";
+    $img3_src = isset($img['img3']) ? $img['img3'] : "./assets/img/img_product/default_img.jpeg";
+    $img4_src = isset($img['img4']) ? $img['img4'] : "./assets/img/img_product/default_img.jpeg";
+    $img5_src = isset($img['img5']) ? $img['img5'] : "./assets/img/img_product/default_img.jpeg";
 
     $html_code = '      
     <div class="product-update">
@@ -544,7 +547,7 @@ function html_update($data1)
               <img
                 class="main-img"
                 id="second-main-img"
-                src="assets/img/img_product/default_img.jpeg"
+                src="./assets/img/img_product/default_img.jpeg"
                 alt="hinhTo"
               />
             </div>

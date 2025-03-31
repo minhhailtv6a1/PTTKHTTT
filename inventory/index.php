@@ -3,7 +3,7 @@ session_start(); // Bắt đầu phiên làm việc
 
 // Kiểm tra xem người dùng đã đăng nhập hay chưa  
 if (!isset($_SESSION['username'])) {
-    header("Location: log_in.php"); // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập  
+    header("Location: ./process/log_in.php"); // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập  
     exit();
 }
 ?>
@@ -18,15 +18,15 @@ if (!isset($_SESSION['username'])) {
     <title>Document</title>
     <link
         rel="stylesheet"
-        href="/assets/icons/fontawesome-free-6.7.2/css/all.min.css" />
+        href="./assets/icons/fontawesome-free-6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
-        <?php include "layout/header.php"; ?>
-        <?php include "layout/left_menu.php"; ?>
-        <?php include "layout/mid.php"; ?>
+        <?php include "./layout/header.php"; ?>
+        <?php include "./layout/left_menu.php"; ?>
+        <?php include "./layout/mid.php"; ?>
     </div>
 </body>
 

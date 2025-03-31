@@ -1,0 +1,318 @@
+dialog {
+  width: 30%;
+  border: none;
+  border-radius: 8px;
+  padding: 20px 40px 20px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4caf50;
+}
+
+dialog form label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px; /* Giảm khoảng cách giữa label và input */
+}
+
+dialog form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 0; /* Loại bỏ margin-top mặc định */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 5px; /* Thêm margin giữa các input */
+}
+
+.add_address .flex-row input:last-child {
+  margin-right: 0; /* Loại bỏ margin-right cho input cuối cùng trong hàng */
+}
+
+.dialog-buttons {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.dialog-buttons button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dialog-buttons button[type="button"] {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.dialog-buttons button[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.add_address .flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.add_address .flex-row div {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.add_address .flex-row div:last-child {
+  margin-right: 0;
+}
+
+.add_address h2 {
+  margin: 10px 0 -5px 0;
+}
+
+#providerForm hr {
+  margin: 15px 0 0 0;
+  width: 105%;
+}
+
+@media (max-width: 900px) {
+  dialog {
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  dialog {
+    width: 50%;
+  }
+}
+
+.page-link {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #eb6532;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #faede4;
+}
+
+.page-link:hover {
+  background-color: #eb6532;
+  color: #fff;
+}
+
+.page-link.active {
+  background-color: #eb6532;
+  color: #fff;
+  font-weight: bold;
+  cursor: default;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+/* Chỉnh cho phần overlay và hiển thị nền */
+.fakebg1 {
+  display: none;
+  /* Ẩn mặc định */
+  position: fixed;
+  /* Gắn cố định trên màn hình */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Màu nền tối mờ */
+  z-index: 1000;
+  /* Đặt trên các thành phần khác */
+  display: flex;
+  /* Dùng flexbox để căn giữa */
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.provider-update {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 500px;
+  padding-bottom: 30px;
+  color: black;
+  /* padding-right: 10px; */
+  /* height: 600px; */
+}
+.provider-update .content-update {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.provider-update .flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.provider-update .flex-row > div:nth-child(1) {
+  width: 50%;
+}
+
+.provider-update h1 {
+  text-align: center;
+  width: 100%;
+  margin: 0px 0 10px 0;
+}
+
+.provider-update h2 {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.provider-update hr {
+  margin: 20px auto;
+}
+
+.provider-update #btn-update-provider:hover {
+  transform: translateY(-1px) !important;
+  background-color: #d32f2f !important;
+}
+
+.provider-update #btn-update-provider {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.provider-update input[type="text"] {
+  padding: 3px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.provider-update label {
+  margin: 50px 0;
+}
+
+.provider-update .address .flex-row input[type="text"] {
+  max-width: 180px;
+  margin: 0 10px;
+}
+
+.close-detail {
+  /* text-align: right; */
+  display: block !important;
+  margin: 10px 10px 10px auto !important;
+  /* Căn giữa */
+  background-color: #f44336 !important;
+  /* Màu nền đỏ */
+  color: #fff !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+
+.close-detail:hover {
+  background-color: #d32f2f !important;
+  /* Màu đỏ đậm hơn khi hover */
+}
+
+.provider-update .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 0 -10px 0;
+}
+
+.provider-update .btn button {
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.provider-update .btn button:hover {
+  transform: translateY(-1px);
+  background-color: #d1bfbf;
+}
+
+.provider-delete {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  /* width: 800px; */
+  max-width: 420px;
+  color: black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  /* height: 600px; */
+}
+
+.provider-delete .content-delete {
+  border-top: 1px solid rgba(0, 0, 0, 0.342);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+  padding: 25px 20px;
+}
+
+.provider-delete .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px;
+}
+
+.provider-delete .btn button {
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.provider-delete #btn-delete-provider {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.provider-delete .btn button:hover {
+  transform: translateY(-1px);
+  background-color: #d1bfbf;
+}
+
+.provider-delete #btn-delete-product:hover {
+  transform: translateY(-1px);
+  background-color: #d32f2f;
+}

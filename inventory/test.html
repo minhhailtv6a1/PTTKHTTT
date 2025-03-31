@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div class="product-detail">
+      <h1>Chi tiết sản phẩm</h1>
+      <div class="content-detail">
+        <div class="show-img">
+          <div>
+            <img class="main-img"
+              src="assets/img/img_product/chiTietAnhSP/SP_1/anh1.png"
+              alt="hinhTo"
+            />
+          </div>
+          <div class="total-img">
+            <img class="active detail-img  photo1" onclick="showPhoto(this)"
+              src="assets/img/img_product/chiTietAnhSP/SP_1/anh1.png"
+              alt="hinh1"
+            />
+            <img class="detail-img photo2" onclick="showPhoto(this)"
+              src="assets/img/img_product/chiTietAnhSP/SP_1/anh2.png"
+              alt="hinh2"
+            />
+            <img class="detail-img photo3" onclick="showPhoto(this)"
+              src="assets/img/img_product/chiTietAnhSP/SP_1/anh3.png"
+              alt="hinh3"
+            />
+            <img class="detail-img photo4" onclick="showPhoto(this)"
+              src="assets/img/img_product/chiTietAnhSP/SP_1/anh4.png"
+              alt="hinh4"
+            />
+            <img class="detail-img photo5" onclick="showPhoto(this)"
+              src="assets/img/img_product/chiTietAnhSP/SP_1/anh5.png"
+              alt="hinh5"
+            />
+          </div>
+        </div>
+        <div class="show-info">
+          <h2>Áo bóng đá CLB MU 23-24</h2>
+          <div class="id_type">
+            <div>Mã sản phẩm: <span>1</span></div>
+            <div>Phân loại: <span>Quần áo CLB</span></div>
+          </div>
+          <div class="brand">Thương hiệu: <span>Nike</span></div>
+          <div class="price">Giá sản phẩm: <span>1.000.000đ</span></div>
+          <div class="size">
+            <div>Size:</div>
+            <div class="size-btn-container">
+              <button type="button" class="size-btn active" onclick="showSize(this)">Tất cả</button type="button">
+              <button type="button" class="size-btn" onclick="showSize(this)">S</button type="button">
+              <button type="button" class="size-btn" onclick="showSize(this)">M</button type="button">
+              <button type="button" class="size-btn" onclick="showSize(this)">L</button type="button">
+              <button type="button" class="size-btn" onclick="showSize(this)">XL</button type="button">
+              <button type="button" class="size-btn" onclick="showSize(this)">XXL</button type="button">
+            </div>
+          </div>
+          <div class="stock size-all">Kho: <span>200</span></div>
+          <div class="stock size-s" hidden>Kho: <span>50</span></div>
+          <div class="stock size-m" hidden>Kho: <span>70</span></div>
+          <div class="stock size-l" hidden>Kho: <span>30</span></div>
+          <div class="stock size-xl" hidden>Kho: <span>20</span></div>
+          <div class="stock size-xxl" hidden>Kho: <span>30</span></div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="product-delete">
+      <div>
+        <button class="close-detail" type="button" onclick="closeFakeBG1(this)">
+          x
+        </button>
+      </div>
+      <div class="content-delete">
+        <p>
+          Sản phẩm này sẽ được xóa khởi website, bạn chắc chắn muốn xóa sản phẩm
+          này?
+        </p>
+      </div>
+      <div class="btn">
+        <button type="button">Hủy</button>
+        <button type="submit">Xóa sản phẩm</button>
+      </div>
+    </div> -->
+
+    <!-- 
+    <div class="product-update">
+      <h1>Chỉnh sửa sản phẩm</h1>
+      <div class="content-update">
+        <div class="show-img">
+          <div>
+            <div>
+              <img
+                class="main-img"
+                src="assets/img/img_product/chiTietAnhSP/SP_1/anh1.png"
+                alt="hinhTo"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+              "
+            >
+              <div class="total-img">
+                <img
+                  class="active update-img photo1"
+                  onclick="showPhoto(this)"
+                  src="assets/img/img_product/chiTietAnhSP/SP_1/anh1.png"
+                  alt="hinh1"
+                />
+                <img
+                  class="update-img photo2"
+                  onclick="showPhoto(this)"
+                  src="assets/img/img_product/chiTietAnhSP/SP_1/anh2.png"
+                  alt="hinh2"
+                />
+                <img
+                  class="update-img photo3"
+                  onclick="showPhoto(this)"
+                  src="assets/img/img_product/chiTietAnhSP/SP_1/anh3.png"
+                  alt="hinh3"
+                />
+                <img
+                  class="update-img photo4"
+                  onclick="showPhoto(this)"
+                  src="assets/img/img_product/chiTietAnhSP/SP_1/anh4.png"
+                  alt="hinh4"
+                />
+                <img
+                  class="update-img photo5"
+                  onclick="showPhoto(this)"
+                  src="assets/img/img_product/chiTietAnhSP/SP_1/anh5.png"
+                  alt="hinh5"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img
+                class="main-img"
+                id="second-main-img"
+                src="assets/img/img_product/default_img.jpeg"
+                alt="hinhTo"
+              />
+            </div>
+            <div style="padding-left: 20px">
+              <input
+                type="file"
+                id="image-input"
+                accept="image/*"
+                onchange="updateImage()"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="show-info">
+          <h2>Áo bóng đá CLB MU 23-24</h2>
+          <div class="id_type">
+            <div>Mã sản phẩm: <span>1</span></div>
+            <div>Phân loại: <span>Quần áo CLB</span></div>
+          </div>
+          <div class="brand">Thương hiệu: <span>Nike</span></div>
+          <div class="price">Giá sản phẩm: <span>1.000.000đ</span></div>
+        </div>
+        <div class="btn-update">
+          <button type="button" onclick="closeFakeBG1(this)">Hủy</button>
+          <button id="btn-delete-product" type="button">Xóa sản phẩm</button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="provider-update">
+      <div><button class="close-detail" type="button" onclick="closeFakeBG1(this)">x</button></div>
+    <h1>Chỉnh sửa thông tin</h1>
+    <div class="content-update">
+      <div class="show-info">
+        <div>
+          <label for="update-name">Tên nhà cung cấp</label> <br>
+          <input style="width: 400px; margin: 5px 0;" type="text" id="update-name" name="update-name" value="" required/>
+        </div>
+
+        <div>
+          <label for="update-numberPhone">Số điện thoại</label> <br>
+          <input style="width: 400px; margin: 5px 0;" type="text" id="update-numberPhone" name="update-numberPhone" value="" required/>
+        </div>
+
+        <div>
+          <label for="update-email">Email</label> <br>
+          <input style="width: 400px; margin: 5px 0;" type="text" id="update-email" name="update-email" value="" required/>
+        </div>
+
+        <hr>
+
+        <div class="address">
+          <h2>Địa chỉ</h2>
+          <div class="flex-row">
+            <div>
+              <label for="update-numberHouse">Số nhà</label> <br>
+              <input style="width: 400px; margin: 5px 0;" type="text" id="update-numberHouse" name="update-numberHouse" value="" required/>
+            </div>
+  
+            <div>
+              <label for="update-street">Đường</label> <br>
+              <input style="width: 400px; margin: 5px 0;" type="text" id="update-street" name="update-street" value="" required/>
+            </div>
+          </div>
+
+          <div class="flex-row">
+            <div>
+              <label for="update-ward">Phường</label> <br>
+              <input style="width: 400px; margin: 5px 0;" type="text" id="update-ward" name="update-ward" value="" required/>
+            </div>
+
+            <div>
+              <label for="update-district">Quận</label> <br>
+              <input style="width: 400px; margin: 5px 0;" type="text" id="update-district" name="update-district" value="" required/>
+            </div>
+          </div>
+
+          <div>
+            <label for="update-city">Thành phố</label> <br>
+            <input style="width: 400px; margin: 5px 0;" type="text" id="update-city" name="update-city" value="" required/>
+          </div>
+        </div>
+
+        <div class="btn">
+          <button type="button" onclick="closeFakeBG1(this)">Hủy</button>
+          <button id="btn-update-provider" type="button" onclick="updateProduct(), closeFakeBG1(this)">Xác nhận </button> 
+    </div>
+    </div>
+  </div> -->
+
+    <div class="addressInVN">
+      <label for="province">*Tỉnh/Thành phố:</label>
+      <select id="province">
+        <option value="">Chọn tỉnh/thành phố</option>
+      </select>
+
+      <label for="district" class="district">*Quận/Huyện:</label>
+      <select id="district">
+        <option value="">Chọn quận/huyện</option>
+      </select>
+      <label for="ward" class="ward">*Phường/Xã:</label>
+      <select id="ward">
+        <option value="">Chọn phường/xã</option>
+      </select>
+    </div>
+    <label for="" class="addressCustomer">*SỐ NHÀ</label>
+    <input
+      type="text"
+      placeholder="123 trần hưng đạo"
+      class="inputAddressCustomer"
+    />
+  </body>
+</html>
+
+<script>
+  // API thông tin các thành phố quận phường tại Việt Nam
+  document.addEventListener("DOMContentLoaded", function () {
+    const provinceSelect = document.getElementById("province");
+    const districtSelect = document.getElementById("district");
+    const wardSelect = document.getElementById("ward");
+
+    // Lấy danh sách tỉnh/thành phố từ API
+    fetch("https://provinces.open-api.vn/api/")
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((province) => {
+          const option = document.createElement("option");
+          option.value = province.code;
+          option.textContent = province.name;
+          provinceSelect.appendChild(option);
+        });
+      });
+
+    // Khi chọn tỉnh/thành phố, lấy danh sách quận/huyện
+    provinceSelect.addEventListener("change", function () {
+      const provinceCode = this.value;
+      districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+      wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+
+      if (provinceCode) {
+        fetch(`https://provinces.open-api.vn/api/p/${provinceCode}?depth=2`)
+          .then((response) => response.json())
+          .then((data) => {
+            data.districts.forEach((district) => {
+              const option = document.createElement("option");
+              option.value = district.code;
+              option.textContent = district.name;
+              districtSelect.appendChild(option);
+            });
+          });
+      }
+    });
+
+    // Khi chọn quận/huyện, lấy danh sách phường/xã
+    districtSelect.addEventListener("change", function () {
+      const districtCode = this.value;
+      wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+
+      if (districtCode) {
+        fetch(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`)
+          .then((response) => response.json())
+          .then((data) => {
+            data.wards.forEach((ward) => {
+              const option = document.createElement("option");
+              option.value = ward.code;
+              option.textContent = ward.name;
+              wardSelect.appendChild(option);
+            });
+          });
+      }
+    });
+  });
+</script>
+
+<script>
+  function updateImage() {
+    const fileInput = document.getElementById("image-input");
+    const image = document.getElementById("second-main-img");
+
+    // Kiểm tra nếu có file ảnh được chọn
+    if (fileInput.files && fileInput.files[0]) {
+      const reader = new FileReader();
+
+      // Đọc file và gắn đường dẫn ảnh vào thẻ ảnh
+      reader.onload = function (e) {
+        image.src = e.target.result;
+      };
+      reader.readAsDataURL(fileInput.files[0]);
+    }
+  }
+</script>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  #image-input {
+    display: block; /* Hiển thị như một khối */
+    margin: 10px auto; /* Căn giữa theo chiều ngang */
+    padding: 8px 12px; /* Khoảng cách bên trong */
+    border: 1px solid #cccccc; /* Viền */
+    border-radius: 5px; /* Bo góc */
+    background-color: #f9f9f9; /* Màu nền */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+    color: #333; /* Màu chữ */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Hiển thị con trỏ chuột */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển đổi */
+  }
+  .content-update .show-img > div > img {
+    margin: 0 30px;
+  }
+  #image-input:hover {
+    background-color: #eb6532; /* Đổi màu nền khi hover */
+    color: #fff; /* Đổi màu chữ khi hover */
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3); /* Hiệu ứng đổ bóng khi hover */
+  }
+
+  #image-input:focus {
+    outline: none; /* Loại bỏ viền focus mặc định */
+    border: 1px solid #eb6532; /* Thêm viền focus mới */
+    box-shadow: 0px 0px 8px rgba(235, 101, 50, 0.5); /* Hiệu ứng tập trung */
+  }
+
+  .provider-update {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: yellow;
+    width: 500px;
+    padding-bottom: 30px;
+    padding-right: 10px;
+    /* height: 600px; */
+  }
+  .provider-update .content-update {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+  }
+
+  .provider-update .flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .provider-update .flex-row > div:nth-child(1) {
+    width: 50%;
+  }
+
+  .provider-update h1 {
+    text-align: center;
+    width: 100%;
+    margin: 0px 0 10px 0;
+  }
+
+  .provider-update h2 {
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  .provider-update hr {
+    margin: 20px auto;
+  }
+
+  .provider-update #btn-update-provider:hover {
+    transform: translateY(-1px) !important;
+    background-color: #d32f2f !important;
+  }
+
+  .provider-update #btn-update-provider {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    margin: auto 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .provider-update input[type="text"] {
+    padding: 3px;
+  }
+  .provider-update label {
+    margin: 50px 0;
+  }
+
+  .provider-update .address .flex-row input[type="text"] {
+    max-width: 180px;
+    margin: 0 10px;
+  }
+
+  .product-update {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: yellow;
+    width: 800px;
+    padding-bottom: 30px;
+    /* height: 600px; */
+  }
+  .content-update {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+  }
+
+  .product-update h1 {
+    text-align: center;
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .product-update img {
+    width: 45px;
+    height: 45px;
+    margin: 5px;
+    transition: all 0.5 ease;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .total-img img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+
+  .product-update .main-img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .product-update img.active {
+    border: 2px rgb(255, 154, 86) solid;
+  }
+
+  .product-update .total-img {
+    overflow-x: scroll;
+    max-width: 220px;
+    max-height: 90px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+  }
+
+  .content-update .show-img {
+    display: flex; /* Sử dụng flexbox */
+    /* flex: 1; Để đảm bảo nó chiếm phần ngữ nghĩa trong hàng */
+    flex-direction: row;
+    /* justify-content: space-between; Đặt khoảng cách giữa các phần tử */
+    justify-content: center;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin: 20px; /* Khoảng cách cho các phần tử */
+    width: 100%;
+  }
+
+  .size-btn {
+    display: inline-block;
+    padding: 6px 9px;
+    margin: 0 5px 0 0;
+    text-decoration: none;
+    color: #eb6532;
+    border: 1px solid #dddddd;
+    /* border-radius: 5px; */
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background-color: #faede4;
+  }
+
+  .size-btn:hover {
+    background-color: #eb6532;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .size-btn.active {
+    background-color: #eb6532;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .show-info .id_type {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .brand {
+    font-weight: bold;
+    margin: 5px auto;
+    font-size: 18px;
+  }
+
+  .show-info span {
+    color: red;
+  }
+
+  .show-info .price {
+    margin: 20px auto 10px;
+    font-size: 20px;
+  }
+
+  .show-info h2 {
+    font-size: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .show-info {
+    /* text-align: center; */
+    margin-left: 30px;
+  }
+
+  .size > div:nth-child(1) {
+    font-size: 18px;
+    margin: 5px auto;
+  }
+
+  .stock {
+    font-size: 18px;
+    margin: 10px auto;
+  }
+</style>
+
+<style>
+  .product-delete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    /* width: 800px; */
+    max-width: 420px;
+    color: black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* height: 600px; */
+  }
+
+  .product-delete .content-delete {
+    border-top: 1px solid rgba(0, 0, 0, 0.342);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+    padding: 25px 20px;
+  }
+
+  .product-delete .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .product-delete .btn button {
+    padding: 7px 10px;
+    margin: auto 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .product-delete .btn button:nth-child(2) {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .product-delete .btn button:hover {
+    transform: translateY(-1px);
+    background-color: #d1bfbf;
+  }
+
+  .product-delete .btn button:nth-child(2):hover {
+    transform: translateY(-1px);
+    background-color: #d32f2f;
+  }
+  /* Nút đóng */
+  .close-detail {
+    /* text-align: right; */
+    display: block !important;
+    margin: 10px 10px 10px auto !important;
+    /* Căn giữa */
+    background-color: #f44336 !important;
+    /* Màu nền đỏ */
+    color: #fff !important;
+    border: none !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+  }
+
+  .close-detail:hover {
+    background-color: #d32f2f !important;
+    /* Màu đỏ đậm hơn khi hover */
+  }
+</style>
+
+<script>
+  function showSize(element) {
+    document.querySelectorAll(".size-btn").forEach((e) => {
+      e.classList.remove("active");
+    });
+
+    element.classList.add("active");
+
+    let quantity_size = document.querySelectorAll(".stock");
+    quantity_size.forEach((e) => {
+      e.hidden = true;
+    });
+
+    let sizeClass = element.textContent.trim().toLowerCase();
+    if (sizeClass === "tất cả") {
+      document.querySelector(".size-all").hidden = false;
+      // document.querySelector(".size-all").classList.add("active");
+    } else {
+      let stockElement = document.querySelector(`.size-${sizeClass}`);
+      if (stockElement) {
+        stockElement.hidden = false; // Hiển thị phần tử stock tương ứng
+      }
+    }
+  }
+
+  function showPhoto(element) {
+    document.querySelectorAll(".detail-img").forEach((e) => {
+      e.classList.remove("active");
+    });
+
+    element.classList.add("active");
+
+    let selected_img = element.src;
+    document.querySelector(".main-img").src = selected_img;
+  }
+</script>
+
+<style>
+  @media screen and (max-width: 920px) {
+    .show-info {
+      width: calc(100%);
+    }
+
+    .show-img {
+      width: calc(100%);
+      text-align: center !important;
+    }
+
+    .show-img .total-img {
+      width: 100%;
+      text-align: center;
+    }
+    .product-detail {
+      width: 80%;
+      overflow-y: scroll;
+      max-height: 500px;
+    }
+    .content-detail {
+      justify-content: space-around;
+    }
+    .show-info .id_type {
+      justify-content: left;
+    }
+    .show-info .id_type > div {
+      margin-right: 50px;
+    }
+  }
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  .product-detail {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: yellow;
+    width: 800px;
+    padding-bottom: 30px;
+    /* height: 600px; */
+  }
+  .content-detail {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+  }
+
+  .product-detail h1 {
+    text-align: center;
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .product-detail img {
+    width: 45px;
+    height: 45px;
+    margin: 5px;
+    transition: all 0.5 ease;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .total-img img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+
+  .product-detail .main-img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .product-detail img.active {
+    border: 2px rgb(255, 154, 86) solid;
+  }
+
+  .product-detail .total-img {
+    overflow-x: scroll;
+    max-width: 220px;
+    max-height: 90px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+  }
+
+  .show-img {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the children horizontally */
+    text-align: center;
+  }
+
+  .size-btn {
+    display: inline-block;
+    padding: 6px 9px;
+    margin: 0 5px 0 0;
+    text-decoration: none;
+    color: #eb6532;
+    border: 1px solid #dddddd;
+    /* border-radius: 5px; */
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background-color: #faede4;
+  }
+
+  .size-btn:hover {
+    background-color: #eb6532;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .size-btn.active {
+    background-color: #eb6532;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .show-info .id_type {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .brand {
+    font-weight: bold;
+    margin: 5px auto;
+    font-size: 18px;
+  }
+
+  .show-info span {
+    color: red;
+  }
+
+  .show-info .price {
+    margin: 20px auto 10px;
+    font-size: 20px;
+  }
+
+  .show-info h2 {
+    font-size: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .show-info {
+    /* text-align: center; */
+    margin-left: 30px;
+  }
+
+  .size > div:nth-child(1) {
+    font-size: 18px;
+    margin: 5px auto;
+  }
+
+  .stock {
+    font-size: 18px;
+    margin: 10px auto;
+  }
+</style>

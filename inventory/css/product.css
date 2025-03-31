@@ -1,0 +1,631 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #eb6532;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #faede4;
+}
+
+.page-link:hover {
+  background-color: #eb6532;
+  color: #fff;
+}
+
+.page-link.active {
+  background-color: #eb6532;
+  color: #fff;
+  font-weight: bold;
+  cursor: default;
+}
+
+/* Chỉnh cho phần overlay và hiển thị nền */
+.fakebg1 {
+  display: none;
+  /* Ẩn mặc định */
+  position: fixed;
+  /* Gắn cố định trên màn hình */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Màu nền tối mờ */
+  z-index: 1000;
+  /* Đặt trên các thành phần khác */
+  display: flex;
+  /* Dùng flexbox để căn giữa */
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+.product-detail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 800px;
+  padding-bottom: 30px;
+  color: black;
+  /* height: 600px; */
+}
+.content-detail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product-detail h1 {
+  text-align: center;
+  width: 100%;
+  margin: 20px auto;
+  color: black;
+}
+
+.product-detail img {
+  width: 45px;
+  height: 45px;
+  margin: 5px;
+  transition: all 0.5 ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.total-img img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.product-detail .main-img {
+  width: 220px;
+  height: 220px;
+}
+
+.product-detail img.active {
+  border: 2px rgb(255, 154, 86) solid;
+}
+
+.product-detail .total-img {
+  overflow-x: scroll;
+  max-width: 220px;
+  max-height: 90px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-bottom: 5px;
+}
+
+.show-img {
+  margin-left: 20px;
+  width: calc(40% - 50px);
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the children horizontally */
+  text-align: center;
+}
+
+.size-btn {
+  display: inline-block;
+  padding: 6px 9px;
+  margin: 0 5px 0 0;
+  text-decoration: none;
+  color: #eb6532;
+  border: 1px solid #dddddd;
+  /* border-radius: 5px; */
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #faede4;
+}
+
+.size-btn:hover {
+  background-color: #eb6532;
+  color: #fff;
+  cursor: pointer;
+}
+
+.size-btn.active {
+  background-color: #eb6532;
+  color: #fff;
+  font-weight: bold;
+}
+
+.show-info {
+  width: calc(60% - 70px);
+  margin-left: 30px;
+}
+
+.product-detail .show-info .id_type {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  font-weight: bold;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.show-info .id_type > div {
+  margin-right: 15px;
+}
+
+.product-detail .brand {
+  font-weight: bold;
+  margin: 5px auto;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.show-info span {
+  color: red;
+}
+
+.product-detail .show-info .price {
+  margin: 20px auto 10px;
+  font-size: 20px;
+}
+
+.show-info h2 {
+  font-size: 30px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.size > div:nth-child(1) {
+  font-size: 18px;
+  margin: 5px auto;
+}
+
+.stock {
+  font-size: 18px;
+  margin: 10px auto;
+  white-space: nowrap;
+}
+
+/* Nút đóng */
+.close-detail {
+  /* text-align: right; */
+  display: block !important;
+  margin: 10px 10px 10px auto !important;
+  /* Căn giữa */
+  background-color: #f44336 !important;
+  /* Màu nền đỏ */
+  color: #fff !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+
+.close-detail:hover {
+  background-color: #d32f2f !important;
+  /* Màu đỏ đậm hơn khi hover */
+}
+
+@media screen and (max-width: 920px) {
+  .show-info {
+    width: calc(100%);
+  }
+
+  .show-img {
+    width: calc(100%);
+  }
+
+  .show-img .total-img {
+    width: 100%;
+    text-align: center;
+  }
+  .product-detail {
+    width: 80%;
+    overflow-y: scroll;
+    max-height: 500px;
+  }
+  .content-detail {
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+  }
+  .show-info .id_type {
+    justify-content: left;
+  }
+  .show-info .id_type > div {
+    margin-right: 50px;
+  }
+}
+
+/* Product-delete */
+.product-delete {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  /* width: 800px; */
+  max-width: 420px;
+  color: black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  /* height: 600px; */
+}
+
+.product-delete .content-delete {
+  border-top: 1px solid rgba(0, 0, 0, 0.342);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+  padding: 25px 20px;
+}
+
+.product-delete .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px;
+}
+
+.product-delete .btn button {
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-delete #btn-delete-product {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-delete .btn button:hover {
+  transform: translateY(-1px);
+  background-color: #d1bfbf;
+}
+
+.product-delete #btn-delete-product:hover {
+  transform: translateY(-1px);
+  background-color: #d32f2f;
+}
+
+#image-input {
+  display: block; /* Hiển thị như một khối */
+  margin: 10px auto; /* Căn giữa theo chiều ngang */
+  padding: 8px 12px; /* Khoảng cách bên trong */
+  border: 1px solid #cccccc; /* Viền */
+  border-radius: 5px; /* Bo góc */
+  background-color: #f9f9f9; /* Màu nền */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+  color: #333; /* Màu chữ */
+  font-size: 16px; /* Kích thước chữ */
+  cursor: pointer; /* Hiển thị con trỏ chuột */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển đổi */
+}
+.content-update .show-img > div > img {
+  margin: 0 30px;
+}
+#image-input:hover {
+  background-color: #eb6532; /* Đổi màu nền khi hover */
+  color: #fff; /* Đổi màu chữ khi hover */
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3); /* Hiệu ứng đổ bóng khi hover */
+}
+
+#image-input:focus {
+  outline: none; /* Loại bỏ viền focus mặc định */
+  border: 1px solid #eb6532; /* Thêm viền focus mới */
+  box-shadow: 0px 0px 8px rgba(235, 101, 50, 0.5); /* Hiệu ứng tập trung */
+}
+
+.product-update input[type="text"],
+select {
+  padding: 5px 2px !important;
+}
+.product-update {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: yellow; */
+  background-color: white;
+  width: 800px;
+  padding-bottom: 30px;
+  color: black;
+  /* height: 600px; */
+}
+.product-update .content-update {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.product-update h1 {
+  text-align: center;
+  width: 100%;
+  margin: 0px !important;
+  color: black;
+  font-size: 20px;
+}
+
+.product-update img {
+  width: 45px;
+  height: 45px;
+  margin: 5px;
+  transition: all 0.5 ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#second-main-img {
+  margin-top: -15px;
+}
+
+.product-update .total-img img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.product-update .main-img {
+  width: 220px;
+  height: 220px;
+}
+
+.product-update img.active {
+  border: 2px rgb(255, 154, 86) solid;
+}
+
+.product-update .total-img {
+  overflow-x: scroll;
+  max-width: 220px;
+  max-height: 90px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-bottom: 5px;
+}
+
+.product-update .content-update .show-img {
+  display: flex; /* Sử dụng flexbox */
+  /* flex: 1; Để đảm bảo nó chiếm phần ngữ nghĩa trong hàng */
+  flex-direction: row;
+  /* justify-content: space-between; Đặt khoảng cách giữa các phần tử */
+  justify-content: center;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  /* margin: 5px 20px 20px 20px; Khoảng cách cho các phần tử */
+  width: 100%;
+}
+
+/* .product-update .show-info  */
+
+.product-update .show-info .id_type {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
+  align-items: center;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+.product-update .brand {
+  /* font-weight: bold; */
+  margin: 5px auto;
+}
+
+.product-update .show-info span {
+  color: red;
+}
+
+.product-update .show-info .price {
+  margin: 10px 0 0 0;
+}
+
+.product-update .show-info {
+  /* text-align: center; */
+  margin-left: 30px;
+}
+
+.product-update .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.product-update .btn button {
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-update .btn button:hover {
+  transform: translateY(-1px) !important;
+  background-color: #d1bfbf !important;
+}
+
+.product-update #btn-update-product:hover {
+  transform: translateY(-1px) !important;
+  background-color: #d32f2f !important;
+}
+
+.product-update #btn-update-product {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+* {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #4caf50;
+  margin: 15px;
+}
+
+.form-info {
+  width: 80%;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.form-info div {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.table-detail {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  /* overflow-x: scroll; */
+}
+
+.table-detail th,
+.table-detail td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  white-space: nowrap;
+}
+
+.table-detail th {
+  background-color: #f2f2f2;
+  color: black;
+  text-align: center;
+}
+
+.table-detail td {
+  text-align: center;
+}
+
+.table-detail tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-detail tr:hover {
+  background-color: #e2e2e2;
+}
+
+.table .table-detail {
+  width: 80%;
+}
+
+.detail button {
+  text-align: left;
+  margin: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .table table {
+    max-width: 400px;
+  }
+}
+
+dialog {
+  width: 30%;
+  border: none;
+  border-radius: 8px;
+  padding: 20px 40px 20px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  /* text-align: left; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #fff; */
+  /* padding-right: 5px; */
+}
+
+dialog h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4caf50;
+}
+
+dialog form label {
+  display: block;
+  margin-top: 10px;
+}
+
+dialog form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* margin-right: 5px; */
+  /* text-align: center; */
+}
+
+dialog form select {
+  width: fit-content;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* margin-right: 5px; */
+  /* text-align: center; */
+}
+
+.dialog-buttons {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.dialog-buttons button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dialog-buttons button[type="button"] {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.dialog-buttons button[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  dialog {
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  dialog {
+    width: 50%;
+  }
+}

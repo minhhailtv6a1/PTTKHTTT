@@ -36,7 +36,7 @@
                 <div class="uppercase"><?php echo $_SESSION['username'] ?></div>
                 <hr />
                 <div><a href="">Thông tin tài khoản</a></div>
-                <div><a href="/process/logout.php">Đăng xuất</a></div>
+                <div><a href="./process/logout.php">Đăng xuất</a></div>
             </div>
         </div>
         <div class="icon-hover" onclick="closeContentHeader()">

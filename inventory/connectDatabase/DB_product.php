@@ -169,7 +169,7 @@ class DB_product
     public function getProductByID($id)
     {
         $sql = "
-        SELECT p.id, p.name, p.price, SUM(qbs.quantity) AS quantity
+        SELECT p.id, p.name, p.price, SUM(qbs.quantity) AS quantity, p.type_id
         FROM products p  
         JOIN quantity_by_size qbs ON p.id = qbs.product_id  
         WHERE p.id = " . $id . "
@@ -490,4 +490,24 @@ class DB_product
 
     //     return $data;
     // }
+
+    public function getAllProductForInvoice()
+    {
+        $sql = "SELECT * FROM products";
+
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->conn->error);
+        }
+
+        if (!$stmt->execute()) {
+            throw new Exception("Failed to execute statement: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        if (!$result) {
+            throw new Exception("Failed to get result: " . $stmt->error);
+        }
+        return $result;
+    }
 }

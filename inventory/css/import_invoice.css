@@ -1,0 +1,633 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+.fakebg1 {
+  /* display: none; */
+  /* Ẩn mặc định */
+  position: fixed;
+  /* Gắn cố định trên màn hình */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  overflow-y: scroll;
+}
+/* .fakebg1 {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+} */
+
+.fakebg1 #import_form {
+  padding: 10px 10px;
+}
+
+.close-detail {
+  /* text-align: right; */
+  display: block !important;
+  margin: 10px 10px 10px auto !important;
+  /* Căn giữa */
+  background-color: #f44336 !important;
+  /* Màu nền đỏ */
+  color: #fff !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+
+.close-detail:hover {
+  background-color: #d32f2f !important;
+  /* Màu đỏ đậm hơn khi hover */
+}
+
+h1 {
+  text-align: center;
+  color: #4caf50;
+  margin: 15px;
+}
+
+.form-info {
+  width: 80%;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.form-info div {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.table td {
+  text-align: center;
+  width: fit-content;
+}
+
+.table table {
+  text-align: center;
+}
+
+.table-detail {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  /* overflow-x: scroll; */
+}
+
+.table-detail th,
+.table-detail td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  white-space: nowrap;
+}
+
+.table-detail th {
+  background-color: #f2f2f2;
+  color: black;
+  text-align: center;
+}
+
+.table-detail td {
+  text-align: center;
+}
+
+.table-detail tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-detail tr:hover {
+  background-color: #e2e2e2;
+}
+
+.table .table-detail {
+  width: 80%;
+}
+
+.detail button {
+  text-align: left;
+  margin: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .table table {
+    max-width: 400px;
+  }
+}
+
+.filter-invoice input[type="date"] {
+  padding: 5px;
+}
+
+.filter-invoice span {
+  /* color: red; */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #eb6532;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #faede4;
+}
+
+.page-link:hover {
+  background-color: #eb6532;
+  color: #fff;
+}
+
+.page-link.active {
+  background-color: #eb6532;
+  color: #fff;
+  font-weight: bold;
+  cursor: default;
+}
+.btn-filter {
+  padding: 7px 8px;
+  cursor: pointer;
+  background-color: #6a47e7;
+  border: 0;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 682px) {
+  .mid-content > div:nth-child(1) > div:nth-child(2) {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .mid-content > div:nth-child(1) > div:nth-child(2) {
+    margin-bottom: 20px;
+    margin-top: 0px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .mid-content > div:nth-child(1) > div:nth-child(2) {
+    position: relative;
+  }
+  /* .mid-content > div:nth-child(1) > div:nth-child(2) > span:nth-of-type(2) {
+    display: none;
+  } */
+  .mid-content > div:nth-child(1) > div:nth-child(2) > span:nth-of-type(1) {
+    display: block;
+  }
+  .mid-content > div:nth-child(1) > div:nth-child(2) > button {
+    position: absolute;
+    right: 0px;
+    top: 30px;
+  }
+}
+
+.invoice-delete {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  /* width: 800px; */
+  max-width: 420px;
+  color: black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  /* height: 600px; */
+}
+
+.invoice-delete .content-delete {
+  border-top: 1px solid rgba(0, 0, 0, 0.342);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+  padding: 25px 20px;
+}
+
+.invoice-delete .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px;
+}
+
+.invoice-delete .btn button {
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.invoice-delete #btn-delete-invoice {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.invoice-delete .btn button:hover {
+  transform: translateY(-1px);
+  background-color: #d1bfbf;
+}
+
+.invoice-delete #btn-delete-invoice:hover {
+  transform: translateY(-1px);
+  background-color: #d32f2f;
+}
+
+.update-import-invoice .header {
+  display: flex;
+  align-items: center;
+  /* margin-bottom: 10px; */
+  border: 0;
+}
+
+.update-import-invoice .header-icon {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.update-import-invoice .header-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  border: 0;
+  white-space: nowrap;
+}
+
+.update-import-invoice .search-container {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.update-import-invoice .search-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-import-invoice .search-button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.update-import-invoice .table-container {
+  width: calc(70% - 15px);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* overflow: hidden; */
+  max-width: 985px;
+  overflow-x: scroll;
+  display: block;
+  overflow-y: scroll;
+  max-height: 413px;
+}
+
+.update-import-invoice .table-container h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.update-import-invoice .table-container th {
+  /* white-space: nowrap; */
+  position: sticky;
+  top: 0;
+  /* Đặt tiêu đề dính vào mép trên cùng */
+  z-index: 1;
+  /* Đảm bảo tiêu đề nằm trên nội dung cuộn */
+}
+
+.update-import-invoice .table-container h2 {
+  /* white-space: nowrap; */
+  position: sticky;
+  top: 0;
+  /* Đặt tiêu đề dính vào mép trên cùng */
+  left: 0;
+  z-index: 1;
+  /* Đảm bảo tiêu đề nằm trên nội dung cuộn */
+}
+
+.update-import-invoice .total {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 20px 20px 0 0;
+  width: 80%;
+  font-weight: bold;
+}
+
+.update-import-invoice table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.update-import-invoice th {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+
+.update-import-invoice td {
+  max-width: 100px;
+  padding: 10px;
+}
+
+.update-import-invoice tr:last-child td {
+  border-bottom: none;
+}
+
+.update-import-invoice .quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.update-import-invoice .quantity-button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.update-import-invoice .quantity-input {
+  width: 40px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+.update-import-invoice .remove-button {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+  padding: 2px 7px 0px;
+}
+
+.update-import-invoice .remove-button:hover {
+  background-color: #ffe1e1;
+}
+
+/* Thêm CSS để căn giữa input */
+.update-import-invoice .quantity-controls input[type="number"] {
+  text-align: center;
+  /* Căn giữa nội dung */
+}
+
+.update-import-invoice .quantity-input {
+  /* ... các thuộc tính CSS khác ... */
+  -moz-appearance: textfield;
+  /* Cho Firefox */
+}
+
+/* Ẩn các nút tăng giảm mặc định của input number cho các trình duyệt khác */
+.update-import-invoice .quantity-input::-webkit-outer-spin-button,
+.update-import-invoice .quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.update-import-invoice .list-product {
+  width: calc(30% - 10px);
+  border: 1px solid #ccc;
+  max-height: 413px;
+  overflow-y: scroll;
+}
+
+.update-import-invoice .list-product tr {
+  transition: all 0.3s ease;
+}
+
+.update-import-invoice .list-product tr:hover {
+  background-color: #c4c4c4;
+}
+
+.update-import-invoice .list-product th {
+  /* white-space: nowrap; */
+  position: sticky;
+  top: -2px;
+  /* Đặt tiêu đề dính vào mép trên cùng */
+  z-index: 1;
+  /* Đảm bảo tiêu đề nằm trên nội dung cuộn */
+}
+
+.update-import-invoice .list-product .td-add {
+  text-align: center;
+}
+
+.update-import-invoice .list-product .td-add i {
+  border: 1px solid;
+  padding: 4px 5px;
+  border-radius: 100%;
+  transition: all 0.3s ease;
+}
+
+.update-import-invoice .list-product .td-add i:hover {
+  /* border: 1px solid; */
+  /* padding: 2px 3px; */
+  /* border-radius: 100%; */
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.update-import-invoice .list-product img {
+  height: 50px;
+  width: 50px;
+}
+
+.update-import-invoice .content-detail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 2%;
+}
+
+.update-import-invoice .general-info {
+  width: 100%;
+  margin: 0 0 20px 0;
+  font-size: 18px;
+}
+
+.update-import-invoice .table-container select {
+  width: 5 0px;
+  padding: 5px 0;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.update-import-invoice select {
+  width: 5 0px;
+  padding: 5px 0;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.update-import-invoice .table-container tr {
+  transition: all 0.3s ease;
+}
+
+.update-import-invoice .table-container tr:hover {
+  background-color: #c4c4c4;
+}
+
+.update-import-invoice .table-container option {
+  text-align: center;
+  /* cursor: pointer; */
+}
+
+.update-import-invoice input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+  font-size: 16px;
+  width: calc(30% - 150px);
+  min-width: 220px;
+}
+
+.update-import-invoice td input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+  font-size: 14px;
+  width: calc(30% - 150px);
+  min-width: 100px;
+}
+
+.update-import-invoice .showList {
+  display: none;
+}
+
+.update-import-invoice {
+  color: black;
+  padding: 0px 20px 0;
+}
+
+@media screen and (max-width: 1180px) {
+  .update-import-invoice .list-product {
+    width: calc(35%);
+  }
+
+  .update-import-invoice .table-container {
+    width: calc(65% - 15px);
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .update-import-invoice .list-product {
+    width: 350px;
+    display: none;
+    position: absolute;
+    top: 160px;
+    left: 20px;
+    background-color: #fff;
+    z-index: 100;
+  }
+
+  .update-import-invoice .showList {
+    display: block;
+  }
+
+  .update-import-invoice .table-container {
+    width: calc(100% - 10px);
+    overflow-x: scroll;
+  }
+}
+
+.update-import-invoice .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  /* margin: 20px; */
+  padding: 10px 0 0 0;
+  width: 80%;
+  /* position: absolute;
+  bottom: -10px;
+  left: 30px; */
+}
+
+.update-import-invoice .btn button {
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.update-import-invoice .btn button:hover {
+  transform: translateY(-1px) !important;
+  background-color: #d1bfbf !important;
+}
+
+#btn-update-invoice:hover {
+  transform: translateY(-1px) !important;
+  background-color: #d32f2f !important;
+}
+
+#btn-update-invoice {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  margin: auto 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  white-space: nowrap;
+}

@@ -311,7 +311,7 @@ function html_delete()
             </div>
             <div class="content-delete">
                 <p>
-                Sản phẩm này sẽ được xóa khởi website, bạn chắc chắn muốn xóa sản phẩm
+                Sản phẩm này sẽ được xóa khỏi website, bạn chắc chắn muốn xóa sản phẩm
                 này?
                 </p>
             </div>

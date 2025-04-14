@@ -305,14 +305,14 @@ function html_delete()
             </div>
             <div class="content-delete">
                 <p>
-                Sản phẩm này sẽ được xóa khởi website, bạn chắc chắn muốn xóa sản phẩm
+                Nhà cung cấp này sẽ được xóa khỏi website, bạn chắc chắn muốn xóa nhà cung cấp
                 này?
                 </p>
             </div>
             <div class="btn">
                 <button type="button" onclick="closeFakeBG1(this)">Hủy</button>
                 <a href=\'index.php?page=provider&current=' . $_GET['current'] . '&provider_id=' . $_GET['provider_id'] . '&option=delete&isDeleted=true\'
-                    <button id="btn-delete-provider" type="button" onclick="closeFakeBG1(this)">Xóa sản phẩm</button> 
+                    <button id="btn-delete-provider" type="button" onclick="closeFakeBG1(this)">Xóa nhà cung cấp</button> 
                 </a> 
             </div>
         </div>
@@ -421,7 +421,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['isDeleted'])) {
             window.onload = function() {
                 // let table = document.getElementsByClassName(\"fakebg1\")[0];
                 // table.style.display = \"none\";
-                showSuccessfulAlert(`Xóa sản phẩm thành công`);
+                showSuccessfulAlert(`Xóa nhà cung cấp thành công`);
                 setTimeout(function() {
                     window.location.href = 'index.php?page=provider&current=" . $_GET['current'] . "';
                 }, 1000); // Đợi 2 giây trước khi chuyển hướng

@@ -14,7 +14,7 @@
         <div class="img-homepage"></div>
         <h1 class="heading">Quản lí kho</h1>
         <div class="login-container">
-            <form class="login-form" method="POST" action="../process/login.php">
+            <form class="login-form" method="POST" action="../process/login.php" onsubmit="return checkForm()">
                 <h2>Đăng Nhập</h2>
                 <div class="form-group">
                     <label for="username">Tên Đăng Nhập</label>

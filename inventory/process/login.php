@@ -14,11 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $account = new DB_account();
     $list = $account->getAllAccount();
     foreach ($list as $key => $row) {
-        if ($row['userName'] == $username && $row['passWord'] == $password) {
+        if ($row['userName'] == $username && $row['passWord'] == $password && $row['level'] == "inventoryStaff") {
             session_start(); // Bắt đầu phiên làm việc  
             $accountName = $row['name'];
             // echoJS("alert('" . $accountName . "')");
             $_SESSION['username'] = $accountName; // Lưu thông tin vào phiên  
+            $_SESSION['id'] = $row['user_id'];
             echoJS("
                 document.addEventListener('DOMContentLoaded', function() {
                     showSuccessfulAlert('Welcome " . $accountName . "');
@@ -29,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echoJS("
                 setTimeout(function() {
                     window.location.href = '../index.php';
-                }, 2000); // Đợi 2 giây trước khi chuyển hướng
+                }, 1500); // Đợi 2 giây trước khi chuyển hướng
             ");
             return;
         }
@@ -38,6 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echoJS("
         document.addEventListener('DOMContentLoaded', function() {
                 showFailedAlert('Tên đăng nhập hoặc mật khẩu nhập sai!');
+                setTimeout(function() {
+                    window.location.href = '../layout/register-signin.php';
+                }, 1000); // Đợi 2 giây trước khi chuyển hướng
             });
     ");
 }

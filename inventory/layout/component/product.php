@@ -176,13 +176,13 @@ $startIndex = ($currentPage - 1) * $perPage;
                             <td>" . $quantity_all . "</td>  
                             <td>  
                                 <div class='flex-row-space-evenly'>  
-                                    <a href='index.php?page=product&current=" . $currentPage . "&category_id=$category_id&brand=$brand&price1=$price1&price2=$price2&product_id=" . $row['id'] . "&option=update' class='btn-option warning-text' style='background-color: #fff2cf;''>  
+                                    <a href='index.php?page=product&current=" . $currentPage . "&category_id=$category_id&brand=$brand&price1=$price1&price2=$price2&product_id=" . $row['id'] . "&product_name=$product_name&option=update' class='btn-option warning-text' style='background-color: #fff2cf;''>  
                                         <i class='fa-regular fa-pen-to-square'></i>     
                                     </a> 
-                                    <a href='index.php?page=product&current=" . $currentPage . "&category_id=$category_id&brand=$brand&price1=$price1&price2=$price2&product_id=" . $row['id'] . "&option=delete' class='btn-option wrong'>  
+                                    <a href='index.php?page=product&current=" . $currentPage . "&category_id=$category_id&brand=$brand&price1=$price1&price2=$price2&product_id=" . $row['id'] . "&product_name=$product_name&option=delete' class='btn-option wrong'>  
                                         <i class='fa-regular fa-trash-can'></i>   
                                     </a> 
-                                    <a href='index.php?page=product&current=" . $currentPage . "&category_id=$category_id&brand=$brand&price1=$price1&price2=$price2&product_id=" . $row['id'] . "&option=detail' class='btn-option success'>  
+                                    <a href='index.php?page=product&current=" . $currentPage . "&category_id=$category_id&brand=$brand&price1=$price1&price2=$price2&product_id=" . $row['id'] . "&product_name=$product_name&option=detail' class='btn-option success'>  
                                         <i class='fa-solid fa-ellipsis'></i>  
                                     </a> 
                                 </div>  
@@ -404,53 +404,40 @@ function html_detail($data1)
         ';
     foreach ($data1 as $key => $row) {
         // $flag_newProduct = isset($row['size']) ? 1 : 0;
-        if ($img1_src == "./assets/img/img_product/default_img.jpeg") {
-            // printJS("hello");
-            $sizeCode = initSize($row['type_id']);
-            $html_code .= $sizeCode;
-            break;
-        } else {
-            if ($flag == 0) {
-                $flag = 1;
 
-                $html_code .=
-                    '
+        if ($flag == 0) {
+            $flag = 1;
+
+            $html_code .=
+                '
                 <div class="size-btn-container">
                     <button type="button" class="size-btn active" onclick="showSize(this)">Tất cả</button type="button">
                     <button type="button" class="size-btn" onclick="showSize(this)">' . $row['size'] . '</button type="button">
                     ';
-            } else {
-                $html_code .= '
+        } else {
+            $html_code .= '
                     <button type="button" class="size-btn" onclick="showSize(this)">' . $row['size'] . '</button type="button">
                 ';
-            }
         }
     }
     $flag = 0;
     foreach ($data1 as $key => $row) {
         $quantity_all = isset($row_tmp[0]['quantity']) ? $row_tmp[0]['quantity'] : 0;
         $quantity = isset($row['quantity']) ? $row['quantity'] : 0;
-        if ($img1_src == "./assets/img/img_product/default_img.jpeg") {
+
+        if ($flag == 0) {
+            $flag = 1;
             $html_code .= '
-                </div>
-            </div>
-            <div class="stock size-all">Kho: <span>' . $quantity_all . '</span></div>';
-            break;
-        } else {
-            if ($flag == 0) {
-                $flag = 1;
-                $html_code .= '
                 </div>
             </div>
             <div class="stock size-all">Kho: <span>' . $quantity_all . '</span></div>
             <div class="stock size-' . $row['size'] . '" hidden>Kho: <span>' . $quantity . '</span></div>
                 ';
-            } else {
-                $html_code .=
-                    '
+        } else {
+            $html_code .=
+                '
                 <div class="stock size-' . $row['size'] . '" hidden>Kho: <span>' . $quantity . '</span></div>
                 ';
-            }
         }
     }
     $html_code .= '

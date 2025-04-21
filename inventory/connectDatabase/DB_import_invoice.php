@@ -104,7 +104,7 @@ class DB_import_invoice
         FROM import_invoices i
         JOIN providers p on p.id = i.provider_id
         WHERE i.status = 'active'
-        ORDER BY p.id ASC 
+        ORDER BY i.id ASC 
         LIMIT ?, ?
         ";
 
@@ -132,10 +132,85 @@ class DB_import_invoice
         return $data;
     }
 
+    public function getInvoiceInRangeByDate($start, $perPage, $date1, $date2)
+    {
+        // Kiểm tra đầu vào để đảm bảo $start và $perPage là số nguyên
+        if (!is_int($start) || !is_int($perPage) || $start < 0 || $perPage <= 0) {
+            throw new InvalidArgumentException("Invalid parameters for pagination.");
+        }
+
+        // Câu lệnh SQL với prepared statement
+        $sql = "
+        SELECT i.id, p.name as provider_name, i.importDate, i.total
+        FROM import_invoices i
+        JOIN providers p on p.id = i.provider_id
+        WHERE i.status = 'active' AND i.importDate >= ? AND i.importDate <= ?
+        ORDER BY i.id ASC 
+        LIMIT ?, ?
+        ";
+
+        // Chuẩn bị truy vấn và bind các tham số
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->conn->error);
+        }
+
+        $stmt->bind_param("ssii", $date1, $date2, $start, $perPage); // "ii" đại diện cho hai số nguyên
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Lấy dữ liệu trả về
+        $data = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
+        // Đóng statement
+        $stmt->close();
+
+        return $data;
+    }
+
+    public function getInvoiceByDate($date1, $date2)
+    {
+        // Câu lệnh SQL với prepared statement
+        $sql = "
+        SELECT i.id, p.name as provider_name, i.importDate, i.total
+        FROM import_invoices i
+        JOIN providers p on p.id = i.provider_id
+        WHERE i.status = 'active' AND i.importDate >= ? AND i.importDate <= ?
+        ";
+
+        // Chuẩn bị truy vấn và bind các tham số
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->conn->error);
+        }
+
+        $stmt->bind_param("ss", $date1, $date2); // "ii" đại diện cho hai số nguyên
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Lấy dữ liệu trả về
+        $data = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
+        // Đóng statement
+        $stmt->close();
+
+        return $data;
+    }
+
     public function getDetailInvoice($id)
     {
         $sql = "
-            SELECT i.id, p.name, i.importDate, i.total, d.product_id, d.size, d.price, d.quantity, p1.name as product_name, p1.type_id, d.id as detail_id
+            SELECT i.id, p.name, i.importDate, i.total, d.product_id, d.size, d.price, d.quantity, p1.name as product_name, p1.type_id, d.id as detail_id, i.emp_id
             FROM import_invoices i
             JOIN detail_import_invoices d on i.id = d.invoice_id
             JOIN providers p on p.id = i.provider_id
@@ -156,7 +231,7 @@ class DB_import_invoice
 
         // Lấy kết quả truy vấn và trả về danh sách import_invoice
         $invoices = [];
-        $stmt->bind_result($invoice_id, $provider_name, $importDate, $total, $product_id, $size, $price, $quantity, $product_name, $type_id, $detail_id);
+        $stmt->bind_result($invoice_id, $provider_name, $importDate, $total, $product_id, $size, $price, $quantity, $product_name, $type_id, $detail_id, $emp_id);
 
         while ($stmt->fetch()) {
             // Thêm mỗi kết quả vào mảng
@@ -171,7 +246,8 @@ class DB_import_invoice
                 'quantity' => $quantity,
                 'product_name' => $product_name,
                 'type_id' => $type_id,
-                'detail_id' => $detail_id
+                'detail_id' => $detail_id,
+                'emp_id' => $emp_id
             ];
         }
 
@@ -306,5 +382,44 @@ class DB_import_invoice
         $stmt->close();
 
         return $affected_rows;
+    }
+
+    public function addNewInvoice($provider_id, $emp_id, $importDate, $total)
+    {
+        // Validate input
+        if (empty($provider_id) || empty($emp_id) || empty($importDate)) {
+            throw new Exception("Thiếu thông tin bắt buộc");
+        }
+
+        // Kiểm tra định dạng ngày
+        if (!DateTime::createFromFormat('Y-m-d', $importDate)) {
+            throw new Exception("Định dạng ngày không hợp lệ (YYYY-MM-DD)");
+        }
+
+        $sql = "INSERT INTO import_invoices (provider_id, emp_id, importDate, total, status) 
+                VALUES (?, ?, ?, ?, 'active')";
+
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Prepare failed: " . $this->conn->error);
+        }
+
+        // Ép kiểu để đảm bảo đúng kiểu dữ liệu
+        $provider_id = (int)$provider_id;
+        $emp_id = (int)$emp_id;
+        $total = (float)$total;
+
+        $stmt->bind_param("iisd", $provider_id, $emp_id, $importDate, $total);
+
+        if (!$stmt->execute()) {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception("Execute failed: " . $error);
+        }
+
+        $invoice_id = $stmt->insert_id;
+        $stmt->close();
+
+        return $invoice_id;
     }
 }

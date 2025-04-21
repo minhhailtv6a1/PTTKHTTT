@@ -45,11 +45,12 @@
             </li>
         </a>
 
-        <a href="index.php?page=export_invoice">
+        <!-- <a href="index.php?page=export_invoice">
             <li class="icon-hover">
                 <i class="fa-solid fa-file-export"></i><span class="menu-text">Phiếu xuất kho</span>
             </li>
-        </a>
+        </a> -->
+
     </ul>
     <script>
         function showLeftMenu() {
@@ -175,12 +176,12 @@
     let sp = left_menu[1];
     let ncc = left_menu[2];
     let pnk = left_menu[3];
-    let pxk = left_menu[4];
+    // let pxk = left_menu[4];
     console.log("Tổng quan:", tongQuan);
     console.log("Sản phẩm:", sp);
     console.log("Nhà cung cấp:", ncc);
     console.log("Phiếu nhập kho:", pnk);
-    console.log("Phiếu xuất kho:", pxk);
+    // console.log("Phiếu xuất kho:", pxk);
     // console.log(document.querySelectorAll(".content-left-menu li"));
 
     tongQuan.addEventListener("click", function() {
@@ -188,7 +189,7 @@
         sp.classList.remove("active");
         ncc.classList.remove("active");
         pxk.classList.remove("active");
-        pnk.classList.remove("active");
+        // pnk.classList.remove("active");
     });
 
     sp.addEventListener("click", function() {
@@ -196,7 +197,7 @@
         tongQuan.classList.remove("active");
         ncc.classList.remove("active");
         pxk.classList.remove("active");
-        pnk.classList.remove("active");
+        // pnk.classList.remove("active");
     });
 
     ncc.addEventListener("click", function() {
@@ -204,22 +205,22 @@
         sp.classList.remove("active");
         tongQuan.classList.remove("active");
         pxk.classList.remove("active");
-        pnk.classList.remove("active");
+        // pnk.classList.remove("active");
     });
 
-    pxk.addEventListener("click", function() {
-        pxk.classList.add("active");
-        sp.classList.remove("active");
-        ncc.classList.remove("active");
-        tongQuan.classList.remove("active");
-        pnk.classList.remove("active");
-    });
+    // pxk.addEventListener("click", function() {
+    //     // pxk.classList.add("active");
+    //     sp.classList.remove("active");
+    //     ncc.classList.remove("active");
+    //     tongQuan.classList.remove("active");
+    //     pnk.classList.remove("active");
+    // });
 
     pnk.addEventListener("click", function() {
         pnk.classList.add("active");
         sp.classList.remove("active");
         ncc.classList.remove("active");
-        pxk.classList.remove("active");
+        // pxk.classList.remove("active");
         tongQuan.classList.remove("active");
     })
 
@@ -240,7 +241,7 @@
             pnk.classList.add('active');
             break;
         case 'export_invoice':
-            pxk.classList.add('active');
+            // pxk.classList.add('active');
             break;
         default:
             tongQuan.classList.add('active'); // Default to 'Tổng quan'

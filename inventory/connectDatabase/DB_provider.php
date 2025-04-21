@@ -369,4 +369,39 @@ class DB_provider
 
         return true; // Trả về true nếu thành công, false nếu thất bại
     }
+
+    public function getIdProviderByName($providerName)
+    {
+        $new_name = "%" . urldecode($providerName) . "%";
+
+        // Câu lệnh SQL với prepared statement
+        $sql = "
+        SELECT *
+        FROM providers p
+        WHERE p.status = 'active' AND p.name LIKE ?
+        ";
+
+        // Chuẩn bị truy vấn và bind các tham số
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->conn->error);
+        }
+
+        $stmt->bind_param("s", $new_name); // "ii" đại diện cho hai số nguyên
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Lấy dữ liệu trả về
+        $data = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
+        // Đóng statement
+        $stmt->close();
+
+        return $data[0]['id'];
+    }
 }

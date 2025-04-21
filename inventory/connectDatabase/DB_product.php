@@ -372,6 +372,60 @@ class DB_product
         return $data;
     }
 
+    public function addQuantityBySize($id, $type_id)
+    {
+        $sql = ""; // Khởi tạo biến $sql
+
+        if ($type_id == 1 || $type_id == 2) {
+            $sql = "INSERT INTO quantity_by_size(product_id, size, quantity) VALUES
+                (" . $id . ", 'S', 0),
+                (" . $id . ", 'M', 0),
+                (" . $id . ", 'L', 0),
+                (" . $id . ", 'XL', 0),
+                (" . $id . ", 'XXL', 0)
+            ";
+        } else if ($type_id == 3) {
+            $sql = "INSERT INTO quantity_by_size(product_id, size, quantity) VALUES
+                (" . $id . ", 'XS', 0),
+                (" . $id . ", 'S', 0),
+                (" . $id . ", 'M', 0),
+                (" . $id . ", 'L', 0)
+            ";
+        } else if ($type_id == 4 || $type_id == 5) {
+            $sql = "INSERT INTO quantity_by_size(product_id, size, quantity) VALUES
+                (" . $id . ", '38', 0),
+                (" . $id . ", '39', 0),
+                (" . $id . ", '40', 0),
+                (" . $id . ", '41', 0),
+                (" . $id . ", '42', 0)
+            ";
+        } else if ($type_id == 6) {
+            $sql = "INSERT INTO quantity_by_size(product_id, size, quantity) VALUES
+                (" . $id . ", '28', 0),
+                (" . $id . ", '30', 0),
+                (" . $id . ", '32', 0),
+                (" . $id . ", '34', 0)
+            ";
+        }
+
+        // Kiểm tra xem $sql có giá trị trước khi thực hiện
+        if (!empty($sql)) {
+            $stmt = $this->conn->prepare($sql);
+            if (!$stmt) {
+                throw new Exception("Failed to prepare statement: " . $this->conn->error);
+            }
+
+            if (!$stmt->execute()) {
+                throw new Exception("Failed to execute statement: " . $stmt->error);
+            }
+
+            $stmt->close(); // Thêm đóng statement
+        } else {
+            // Xử lý trường hợp $type_id không hợp lệ nếu cần
+            throw new Exception("Loại sản phẩm không hợp lệ: " . $type_id);
+        }
+    }
+
 
     public function addProduct($name, $type_id, $brand, $price)
     {
@@ -388,7 +442,8 @@ class DB_product
 
         // Thực thi truy vấn
         $result = $stmt->execute();
-
+        $product_id = $this->conn->insert_id;
+        $this->addQuantityBySize($product_id, $type_id);
         // Kiểm tra kết quả
         if ($result) {
             return true; // Trả về true nếu thêm thành công
@@ -493,7 +548,7 @@ class DB_product
 
     public function getAllProductForInvoice()
     {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT * FROM products WHERE status = 'active'";
 
         $stmt = $this->conn->prepare($sql);
         if (!$stmt) {
@@ -509,5 +564,85 @@ class DB_product
             throw new Exception("Failed to get result: " . $stmt->error);
         }
         return $result;
+    }
+    public function getQuantity($product_id, $size)
+    {
+        // Câu lệnh SQL với prepared statement
+        $sql = "
+                SELECT *
+                FROM quantity_by_size qbs
+                WHERE qbs.product_id = ? AND qbs.size = ?
+            ";
+
+        // Chuẩn bị truy vấn và bind các tham số
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->conn->error);
+        }
+
+        $stmt->bind_param("is", $product_id, $size); // "sii" đại diện cho chuỗi, số nguyên, số nguyên
+
+        if (!$stmt->execute()) {
+            throw new Exception("Failed to execute statement: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        if (!$result) {
+            throw new Exception("Failed to get result: " . $stmt->error);
+        }
+
+        // Lấy dữ liệu trả về
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        // Đóng statement
+        $stmt->close();
+
+        return $data;
+    }
+    public function updateQuantity($product_id, $size, $quantity)
+    {
+        $quantityData = $this->getQuantity($product_id, $size);
+
+        if (!empty($quantityData)) {
+            if (isset($quantityData[0]['quantity'])) {
+                $oldQuantity = intval($quantityData[0]['quantity']);
+                $newQuantity = $oldQuantity + $quantity;
+
+                // Câu lệnh SQL UPDATE với prepared statement
+                $sql = "
+                    UPDATE quantity_by_size
+                    SET quantity = ?
+                    WHERE product_id = ? AND size = ?
+                ";
+
+                // Chuẩn bị truy vấn và bind các tham số
+                $stmt = $this->conn->prepare($sql);
+                if (!$stmt) {
+                    throw new Exception("Failed to prepare statement: " . $this->conn->error);
+                }
+
+                $stmt->bind_param("iis", $newQuantity, $product_id, $size);
+
+                if (!$stmt->execute()) {
+                    throw new Exception("Failed to execute statement: " . $stmt->error);
+                }
+
+                // Lấy số hàng bị ảnh hưởng (nếu cần)
+                $affectedRows = $stmt->affected_rows;
+
+                // Đóng statement
+                $stmt->close();
+
+                return $affectedRows; // Trả về số hàng bị ảnh hưởng
+            } else {
+                throw new Exception("Dữ liệu số lượng không hợp lệ cho sản phẩm ID: $product_id và size: $size.");
+            }
+        } else {
+            throw new Exception("Không tìm thấy số lượng cho sản phẩm ID: $product_id và size: $size.");
+            // Hoặc bạn có thể quyết định tạo một bản ghi mới ở đây nếu cần
+        }
     }
 }

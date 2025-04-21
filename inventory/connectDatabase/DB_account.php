@@ -80,4 +80,47 @@ class DB_account
 
         // return $providerId; // Trả về ID của nhà cung cấp vừa được thêm
     }
+
+    public function getIdUser($id)
+    {
+        $sql = "
+    SELECT *
+    FROM users
+    WHERE id = ?
+    ";
+
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->conn->error);
+        }
+
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_assoc(); // Trả về một mảng duy nhất
+        } else {
+            return null; // Hoặc false
+        }
+    }
+
+    public function getAllInventoryStaff()
+    {
+        $sql = "
+        SELECT *
+        FROM accounts a
+        WHERE a.level = 'inventoryStaff' and status = 'active';
+    ";
+
+        $result = $this->conn->query($sql);
+
+        $data = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 }

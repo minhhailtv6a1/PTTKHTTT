@@ -71,23 +71,24 @@ h1 {
   font-size: 16px;
 }
 
-.table td {
+/* .table td {
   text-align: center;
   width: fit-content;
 }
 
 .table table {
   text-align: center;
-}
+} */
 
 .table-detail {
-  width: 80%;
+  /* width: 50%;
   margin: 20px auto;
-  border-collapse: collapse;
-  /* overflow-x: scroll; */
+  border-collapse: collapse; */
+  overflow-x: scroll;
+  min-width: 300px;
 }
 
-.table-detail th,
+/* .table-detail th,
 .table-detail td {
   border: 1px solid #ddd;
   padding: 8px;
@@ -114,7 +115,7 @@ h1 {
 
 .table .table-detail {
   width: 80%;
-}
+} */
 
 .detail button {
   text-align: left;
@@ -265,6 +266,10 @@ h1 {
   border: 0;
 }
 
+.update-import-invoice .active {
+  display: block;
+}
+
 .update-import-invoice .header-icon {
   font-size: 1.5em;
   margin-right: 10px;
@@ -362,6 +367,7 @@ h1 {
 .update-import-invoice td {
   max-width: 100px;
   padding: 10px;
+  border: 0;
 }
 
 .update-import-invoice tr:last-child td {
@@ -473,6 +479,8 @@ h1 {
 .update-import-invoice .list-product img {
   height: 50px;
   width: 50px;
+  box-shadow: 2px 2px 2px rgba(248, 117, 56, 0.3);
+  border-radius: 10px;
 }
 
 .update-import-invoice .content-detail {
@@ -630,4 +638,51 @@ h1 {
   justify-content: space-between;
   width: 100%;
   white-space: nowrap;
+}
+
+.table-container-detail {
+  height: 100%;
+  width: 100%;
+  /* background-color: #ffb5b5; */
+  color: #000000de;
+}
+
+.table-container-detail .table-detail {
+  border-collapse: collapse;
+  overflow-x: scroll;
+  min-width: 300px;
+  text-align: center;
+}
+
+.table-container-detail .table-detail th,
+td {
+  border: 1px solid;
+  padding: 8px;
+}
+
+.table-container-detail .table-detail th {
+  background-color: #45be5f;
+}
+
+.detail123 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  width: 80%;
+  /* height: ; */
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.detail123 > div:nth-child(1) {
+  width: 100%;
+}
+
+.detail123 > div:nth-child(3) {
+  width: 100%;
 }
